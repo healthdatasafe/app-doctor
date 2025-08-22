@@ -10,7 +10,8 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:change": "eslint $(git diff --name-only HEAD | grep -E '\\.(js|jsx)$' | xargs)",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "setup": "./scripts/setup.sh"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
