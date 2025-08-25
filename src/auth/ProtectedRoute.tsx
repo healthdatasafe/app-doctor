@@ -17,10 +17,14 @@ export function ProtectedRoute({ children }: ProtectedRouteProps) {
       setAppManaging(app);
     };
     checkAuth();
-  }, []);
+  }, [appManaging, location]);
 
+  const app = getAppManaging();
 
-  if (appManaging == null) {
+  console.log('App managing', appManaging, app);
+
+  // Maybe we don't need useEffect here .. to be checked
+  if (appManaging == null && app == null) {
     // return 'Should show login';
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

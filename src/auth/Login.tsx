@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 
 import {
@@ -10,19 +10,19 @@ import { showLoginButton } from "../services/dr-lib";
 export function Login() {
   const navigate = useNavigate();
   const location = useLocation();
+  const [buttonFlag] = useState<boolean>(false);
 
   useEffect(() => {
-    const setupButton = async () => {
+    const setupButton = () => {
       showLoginButton('login-button', (state) => {
-        if (state === "loggedIN") {
-          const from = location.state?.from?.pathname || "/dashboard";
+        if (state === 'loggedIN') {
+          const from = location.state?.from?.pathname || '/dashboard';
           navigate(from, { replace: true });
         }
       });
     };
     setupButton();
-  }, [navigate, location]);
-
+  }, [navigate, location, buttonFlag]);
 
   return (
     <Container component="main" maxWidth="xs">

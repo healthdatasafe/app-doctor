@@ -370,14 +370,18 @@ function showLoginButton(loginSpanId, stateChangeCallBack) {
 
   async function pryvAuthStateChange(state) {
     // called each time the authentication state changes
-    console.log("## pryvAuthStateChange", state);
+    console.log("## pryvAuthStateChange > ", state.id);
     if (state.id === pryv.Browser.AuthStates.AUTHORIZED) {
-      await initHDSModel(); // hds model needs to be initialized 
-      appManaging = await appTemplates.AppManagingAccount.newFromApiEndpoint(APP_MANAGING_STREAMID, state.apiEndpoint, APP_MANAGING_NAME);
-      await initDemoAccount();
+      if (appManaging == null) {
+        await initHDSModel(); // hds model needs to be initialized 
+        appManaging = await appTemplates.AppManagingAccount.newFromApiEndpoint(APP_MANAGING_STREAMID, state.apiEndpoint, APP_MANAGING_NAME);
+        await initDemoAccount();
+      } else {
+        console.log('!!!! AppManaging already initialized');
+      }
       stateChangeCallBack("loggedIN");
     }
-    if (state.id === pryv.Browser.AuthStates.INITIALIZED) {
+    if (state.id === pryv.Browser.AuthStates.SIGNOUT) {
       appManaging = null;
       stateChangeCallBack("loggedOUT");
     }
