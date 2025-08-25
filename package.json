@@ -19,6 +19,8 @@
     "@mui/material": "^7.1.1",
     "@types/react-router-dom": "^5.3.3",
     "clsx": "^2.1.1",
+    "hds-lib-js": "git://github.com/healthdatasafe/hds-lib-js",
+    "i18next": "^25.4.0",
     "lucide-react": "^0.514.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

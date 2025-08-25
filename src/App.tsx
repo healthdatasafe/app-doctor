@@ -6,17 +6,22 @@ import {
 } from "react-router-dom";
 import { Dashboard } from "./pages/Dashboard";
 import { Layout } from "./components/layout/Layout";
+import { ProtectedRoute } from "./auth/ProtectedRoute";
+import { Login } from "./auth/Login";
 
 function App() {
   return (
     <Router>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route
           path="/dashboard"
           element={
-            <Layout>
-              <Dashboard />
-            </Layout>
+            <ProtectedRoute>
+              <Layout>
+                <Dashboard />
+              </Layout>
+            </ProtectedRoute>
           }
         />
         <Route
