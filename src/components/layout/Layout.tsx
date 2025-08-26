@@ -4,6 +4,7 @@ import {
   Toolbar,
   useTheme,
 } from "@mui/material";
+import { Sidebar } from "./Sidebar";
 
 interface LayoutProps {
   children: React.ReactNode;
@@ -18,7 +19,7 @@ export function Layout({ children }: LayoutProps) {
   return (
     <Box sx={{ display: "flex", minHeight: "100vh" }}>
       {/* Sidebar */}
-
+      <Sidebar />
       {/* Main Content Area */}
       <Box
         component="main"

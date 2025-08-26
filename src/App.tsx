@@ -4,6 +4,9 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
+
+import "./i18n";
+
 import { Dashboard } from "./pages/Dashboard";
 import { Layout } from "./components/layout/Layout";
 import { ProtectedRoute } from "./auth/ProtectedRoute";
